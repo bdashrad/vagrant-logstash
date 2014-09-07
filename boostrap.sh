@@ -46,7 +46,7 @@ sudo service nginx restart
 # Generate server certificates
 sudo mkdir -p /etc/pki/tls/certs
 sudo mkdir /etc/pki/tls/private
-sudo openssl req -x509 -batch -nodes -days 3650 -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key -out /etc/pki/tls/certs/logstash-forwarder.crt
+sudo openssl req -x509 -batch -nodes -days 3650 -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key -out /etc/pki/tls/certs/logstash-forwarder.crt 2>/dev/null
 
 # install prerequisite packages
 #echo "Installing packages..."
