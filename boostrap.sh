@@ -18,9 +18,9 @@ echo "deb http://packages.elasticsearch.org/elasticsearch/${ELASTICSEARCH_VERSIO
 echo "deb http://packages.elasticsearch.org/logstash/${LOGSTASH_VERSION%.*}/debian stable main" | sudo tee /etc/apt/sources.list.d/logstash.list
 
 # Install nginx, openjdk-java, elasticsearch, logstash
+echo "Installing nginx, openjdk, elasticsearch, logstash..."
 sudo apt-get update
 sudo apt-get autoremove
-echo "Installing nginx, openjdk, elasticsearch, logstash..."
 sudo apt-get -y install nginx openjdk-7-jre-headless elasticsearch=${ELASTICSEARCH_VERSION} logstash=${LOGSTASH_VERSION}-*
 
 # Configure ElasticSearch
