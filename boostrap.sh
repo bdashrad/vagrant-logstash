@@ -38,10 +38,15 @@ sudo tar xvzf /tmp/kibana.tar.gz -C /var/www/kibana3 --strip 1
 sudo sed -i 's/\(^\s*elasticsearch.*\)9200/\180/g' /var/www/kibana3/config.js
 curl -s -o /tmp/kibana.conf https://raw.githubusercontent.com/elasticsearch/kibana/master/sample/nginx.conf
 sed -i "s/kibana.myhost.org/${FQDN}/g;s/^\(\s*root\s*\).*;/\1\/var\/www\/kibana3;/g;s/^\(\s*auth_basic.*\)/#\1/g;" /tmp/kibana.conf
-sudo mv /tmp/kibana.conf /etc/nginx/sites-available/kibana.conf
+sudo cp /tmp/kibana.conf /etc/nginx/sites-available/kibana.conf
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/kibana.conf /etc/nginx/sites-enabled/.
 sudo service nginx restart
+
+# Configure Logstash
+echo "Configuring Logstash..."
+sudo cp /vagrant/logstash_conf/* /etc/logstash/conf.d/.
+sudo service logstash restart
 
 # Generate server certificates
 sudo mkdir -p /etc/pki/tls/certs
