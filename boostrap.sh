@@ -12,11 +12,10 @@ LOGSTASH_VERSION=1.4.2
 #sudo apt-get -y install oracle-java7-installer
 
 # Add repo for elasticsearch and logstash
+echo "Adding external repositories..."
 curl -s http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb http://packages.elasticsearch.org/elasticsearch/${ELASTICSEARCH_VERSION%.*}/debian stable main" | sudo tee /etc/apt/sources.list.d/elasticsearch.list
 echo "deb http://packages.elasticsearch.org/logstash/${LOGSTASH_VERSION%.*}/debian stable main" | sudo tee /etc/apt/sources.list.d/logstash.list
-#sudo apt-get update
-#sudo apt-get -y install elasticsearch=${ELASTICSEARCH_VERSION}
 
 # Install nginx, openjdk-java, elasticsearch, logstash
 sudo apt-get update
